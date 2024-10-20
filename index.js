@@ -1,11 +1,11 @@
-//const math=require("./math");
+const http=require("http");
 
-const {sum,sub} =require("./math");
+const myserver=http.createServer((req,res)=>{
+      console.log("New request reached");
+      console.log(req.headers);
+      res.end("Heloo My Name is Anurag Aman");
+});
 
-const ans1=sub(4,5);
-const ans2=sum(4,3);
-
-
-console.log(ans1);
-console.log(ans2);
-
+myserver.listen(8001,()=>{
+    console.log("server started");
+});
