@@ -1,7 +1,9 @@
-const math=require("./math");
+//const math=require("./math");
 
-const ans1=math.sub(4,5);
-const ans2=math.sum(4,3);
+const {sum,sub} =require("./math");
+
+const ans1=sub(4,5);
+const ans2=sum(4,3);
 
 
 console.log(ans1);
