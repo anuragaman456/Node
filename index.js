@@ -5,7 +5,11 @@ const fs=require("fs");
 const myserver=http.createServer((req,res)=>{
       console.log("New request reached");
     //   console.log(req.headers);
+    if(req.url==="/favicon.ico")
+        return res.end();
     const log= `${Date.now()} : ${req.url} :New Request\n`
+    if(req.url===" /favicon.ico")
+        return res.end();
     fs.appendFile("log.txt",log,(err)=>{
        if(err)
             console.log("Errorfound!");
