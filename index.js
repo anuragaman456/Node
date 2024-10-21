@@ -5,12 +5,22 @@ const fs=require("fs");
 const myserver=http.createServer((req,res)=>{
       console.log("New request reached");
     //   console.log(req.headers);
-    const log= `${Date.now()} : New Request\n`
+    const log= `${Date.now()} : ${req.url} :New Request\n`
     fs.appendFile("log.txt",log,(err)=>{
        if(err)
             console.log("Errorfound!");
-       else
-           res.end("This is the resposnse that i am sending to user");         
+       switch(req.url)
+       {
+         case "/":
+            res.end("Homepage");
+            break;
+         case "/about":
+            res.end("This is abot page");
+            break;
+         default:
+            res.end("404 route Not found");
+            
+       }      
     });
      
 });
