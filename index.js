@@ -8,7 +8,7 @@ const myserver=http.createServer((req,res)=>{
     //   console.log(req.headers);
     if(req.url==="/favicon.ico")
         return res.end();
-    const log= `${Date.now()} : ${req.url} :New Request\n`
+    const log= `${Date.now()} : ${req.url}:method:${req.method} :New Request\n`
     if(req.url===" /favicon.ico")
         return res.end();
 
@@ -22,11 +22,30 @@ const myserver=http.createServer((req,res)=>{
             switch(myurl.pathname)
             {
                 case "/":
-                    res.end("Homepage");
-                    break;
+                    if(req.method==="GET"){ 
+                        res.end("Homepage");
+                        break;
+                    }
                 case "/about":
                     res.end(`hlw ,${name}`);
                     break;
+
+                // here i am writing the case of how youtube ,google works
+                case "/search":
+                    const result=myurl.query.search_query;
+                    res.end(`Here are your results for ${result}`);  
+                    break;
+
+                case"/signup":
+                 if(req.method==="GET")
+                 {
+                    res.end("this is signup page");
+                 }
+                 else if(req.method==="POST")
+                 {
+                    res.end("sucessfully signup");
+                 }
+
                 default:
                     res.end("404 route Not found");
                     
