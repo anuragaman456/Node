@@ -79,7 +79,7 @@ app.delete("/api/users/:id",(req,res)=>{
     const user_id=parseInt(req.params.id);
     const index=users.findIndex((user)=>user.id===user_id);
     if(index==-1)
-        res.send({status:"error"});
+        res.send({status:"error in api"});
     
     else{
            users.splice(index,1);
