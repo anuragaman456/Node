@@ -7,11 +7,12 @@ const app=express();
 
 app.use(express.urlencoded({extended:false}));
 
-app.get("/",(req,res)=>
-{
-    console.log("new reaquest reached");
-    return res.json("Homepage");
-});
+
+app.get("/",(req,res)=>{
+    console.log(req.body);
+    return res.json("Welcome to Home Page");
+    
+})
 
 app.get("/users",(req,res)=>{
      const html=`
